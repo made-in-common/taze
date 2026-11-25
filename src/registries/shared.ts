@@ -15,11 +15,7 @@ export function mergeMode(
   optionMode: RangeMode | undefined = options.mode,
 ): RangeMode | 'ignore' | undefined {
   const configMode = getPackageMode(name, options)
-  return (configMode
-    ? (configMode === optionMode
-        ? optionMode
-        : optionMode === 'default' ? configMode : 'ignore')
-    : optionMode) as RangeMode | 'ignore' | undefined
+  return (configMode ?? optionMode) as RangeMode | 'ignore' | undefined
 }
 
 /**
