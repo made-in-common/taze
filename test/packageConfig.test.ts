@@ -123,7 +123,8 @@ describe('check package', async () => {
     expect(getPkgInfo('typescript', result2).update).toBe(true)
     expect(getPkgInfo('typescript', result2).diff).toBe('major')
 
-    expect(getPkgInfo('vue', result2).update).toBe(false)
+    expect(getPkgInfo('vue', result2).update).toBe(true)
+    expect(getPkgInfo('vue', result2).diff).toBe('minor')
     expect(getPkgInfo('vite', result2).update).toBe(false)
   })
 
@@ -135,7 +136,8 @@ describe('check package', async () => {
   })
 
   it('defined in config file / optionMode:minor', () => {
-    expect(getPkgInfo('typescript', result3).update).toBe(false)
+    expect(getPkgInfo('typescript', result3).update).toBe(true)
+    expect(getPkgInfo('typescript', result3).diff).toBe('major')
 
     expect(getPkgInfo('vue', result3).update).toBe(true)
     expect(getPkgInfo('vue', result3).diff).toBe('minor')
@@ -151,8 +153,10 @@ describe('check package', async () => {
   })
 
   it('defined in config file / optionMode:newest', () => {
-    expect(getPkgInfo('typescript', result4).update).toBe(false)
-    expect(getPkgInfo('vue', result4).update).toBe(false)
+    expect(getPkgInfo('typescript', result4).update).toBe(true)
+    expect(getPkgInfo('typescript', result4).diff).toBe('major')
+    expect(getPkgInfo('vue', result4).update).toBe(true)
+    expect(getPkgInfo('vue', result4).diff).toBe('minor')
     expect(getPkgInfo('vite', result4).update).toBe(false)
   })
 })
